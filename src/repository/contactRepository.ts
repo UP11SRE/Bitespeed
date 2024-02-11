@@ -6,7 +6,6 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
 
   const clean_data = async(result : any, email: any, phone_number: any, pid: any): Promise<any> =>{
 
-    console.log("checking the data", result, email, phone_number, pid);
 
     const uniqueEmails = new Set();
 

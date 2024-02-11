@@ -12,7 +12,7 @@ const initializeConnection = async (): Promise<any> => {
       ssl: {
         rejectUnauthorized: false
       },
-      synchronize: true, 
+      synchronize: false, 
     });
   }
 };
