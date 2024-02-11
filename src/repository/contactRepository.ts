@@ -4,7 +4,7 @@ import { query } from 'express';
 
 const createContact = async (email: string, phone_number: string): Promise<any> => {
 
-  const dataopti = async(result : any, email: any, phone_number: any, pid: any): Promise<any> =>{
+  const clean_data = async(result : any, email: any, phone_number: any, pid: any): Promise<any> =>{
 
     console.log("checking the data", result, email, phone_number, pid);
 
@@ -46,7 +46,7 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
     const re1 = `SELECT email, phone_number, id FROM contact_entity WHERE linked_id = ${existingContact.linked_id} or id = ${existingContact.linked_id}`;
     const result = await contactRepository.query(re1);
 
-    const {emails,phoneNumbers,secondaryContactIds} = await dataopti(result,existingContact.email,existingContact.phone_number,existingContact.linked_id)
+    const {emails,phoneNumbers,secondaryContactIds} = await clean_data(result,existingContact.email,existingContact.phone_number,existingContact.linked_id)
 
     const ans = {
       primaryContatctId: existingContact.linked_id,
@@ -61,7 +61,7 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
   const re1 = `SELECT email, phone_number, id FROM contact_entity WHERE linked_id = ${existingContact.id} or id = ${existingContact.id}`;
   const result = await contactRepository.query(re1);
 
-  const {emails,phoneNumbers,secondaryContactIds} = await dataopti(result,existingContact.email,existingContact.phone_number,existingContact.id)
+  const {emails,phoneNumbers,secondaryContactIds} = await clean_data(result,existingContact.email,existingContact.phone_number,existingContact.id)
 
   const ans = {
     primaryContatctId: existingContact.id,
@@ -84,7 +84,7 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
         const re1 = `SELECT email, phone_number, id FROM contact_entity WHERE linked_id = ${contactWithEmail.linked_id} or id = ${contactWithEmail.linked_id}`;
         const result = await contactRepository.query(re1);
     
-        const {emails,phoneNumbers,secondaryContactIds} = await dataopti(result,contactWithEmail.email,"null",contactWithEmail.linked_id)
+        const {emails,phoneNumbers,secondaryContactIds} = await clean_data(result,contactWithEmail.email,"null",contactWithEmail.linked_id)
 
         const ans = {
           primaryContatctId: contactWithEmail.linked_id,
@@ -98,7 +98,7 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
       const re1 = `SELECT email, phone_number, id FROM contact_entity WHERE linked_id = ${contactWithEmail.id} or id = ${contactWithEmail.id}`;
       const result = await contactRepository.query(re1);
 
-      const {emails,phoneNumbers,secondaryContactIds} = await dataopti(result,contactWithEmail.email,"null",contactWithEmail.id)
+      const {emails,phoneNumbers,secondaryContactIds} = await clean_data(result,contactWithEmail.email,"null",contactWithEmail.id)
 
      const ans = {
        primaryContatctId: contactWithEmail.id,
@@ -128,7 +128,7 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
     const result = await contactRepository.query(re1);
 
 
-    const {emails,phoneNumbers,secondaryContactIds} = await dataopti(result,contactWithEmail.email,contactWithEmail.phone_number,contactWithEmail.linked_id ?? contactWithEmail.id)
+    const {emails,phoneNumbers,secondaryContactIds} = await clean_data(result,contactWithEmail.email,contactWithEmail.phone_number,contactWithEmail.linked_id ?? contactWithEmail.id)
 
     const ans = {
       primaryContatctId: contactWithEmail.linked_id ?? contactWithEmail.id,
@@ -148,7 +148,7 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
         const re1 = `SELECT email, phone_number, id FROM contact_entity WHERE linked_id = ${contactWithPhoneNumber.linked_id} or id = ${contactWithPhoneNumber.linked_id}`;
         const result = await contactRepository.query(re1);
     
-        const {emails,phoneNumbers,secondaryContactIds} = await dataopti(result,"null",contactWithPhoneNumber.phone_number,contactWithPhoneNumber.linked_id)
+        const {emails,phoneNumbers,secondaryContactIds} = await clean_data(result,"null",contactWithPhoneNumber.phone_number,contactWithPhoneNumber.linked_id)
 
         const ans = {
           primaryContatctId: contactWithPhoneNumber.linked_id,
@@ -167,7 +167,7 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
       const result = await contactRepository.query(re1);
       console.log("checking the result-1", result);
     
-      const {emails,phoneNumbers,secondaryContactIds} = await dataopti(result,"null",contactWithPhoneNumber.phone_number,contactWithPhoneNumber.id)
+      const {emails,phoneNumbers,secondaryContactIds} = await clean_data(result,"null",contactWithPhoneNumber.phone_number,contactWithPhoneNumber.id)
 
         const ans = {
           primaryContatctId: contactWithPhoneNumber.id,
@@ -196,7 +196,7 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
     const re1 = `SELECT email, phone_number, id FROM contact_entity WHERE linked_id = ${contactWithPhoneNumber.linked_id ?? contactWithPhoneNumber.id} or id = ${contactWithPhoneNumber.linked_id ?? contactWithPhoneNumber.id}`;
     const result = await contactRepository.query(re1);
 
-    const {emails,phoneNumbers,secondaryContactIds} = await dataopti(result,contactWithPhoneNumber.email,contactWithPhoneNumber.phone_number,contactWithPhoneNumber.linked_id ?? contactWithPhoneNumber.id)
+    const {emails,phoneNumbers,secondaryContactIds} = await clean_data(result,contactWithPhoneNumber.email,contactWithPhoneNumber.phone_number,contactWithPhoneNumber.linked_id ?? contactWithPhoneNumber.id)
  
     const ans = {
       primaryContatctId: contactWithPhoneNumber.linked_id ?? contactWithPhoneNumber.id,
@@ -225,7 +225,7 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
     const re1 = `SELECT email, phone_number, id FROM contact_entity WHERE linked_id = ${secondaryContact.id} or id = ${secondaryContact.id}`;
     const result = await contactRepository.query(re1);
 
-    const {emails,phoneNumbers,secondaryContactIds} = await dataopti(result,secondaryContact.email,secondaryContact.phone_number,secondaryContact.id)
+    const {emails,phoneNumbers,secondaryContactIds} = await clean_data(result,secondaryContact.email,secondaryContact.phone_number,secondaryContact.id)
 
     
 
