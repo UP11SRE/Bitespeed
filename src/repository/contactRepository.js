@@ -131,7 +131,6 @@ const createContact = (email, phone_number) => __awaiter(void 0, void 0, void 0,
       WHERE linked_id = ${contactWithPhoneNumber.id} OR id = ${contactWithPhoneNumber.id}
        `;
             const result = yield contactRepository.query(re1);
-            console.log("checking the result-1", result);
             const { emails, phoneNumbers, secondaryContactIds } = yield clean_data(result, "null", contactWithPhoneNumber.phone_number, contactWithPhoneNumber.id);
             const ans = {
                 primaryContatctId: contactWithPhoneNumber.id,
@@ -142,7 +141,6 @@ const createContact = (email, phone_number) => __awaiter(void 0, void 0, void 0,
             return ans;
         }
         else {
-            console.log("32");
             const newContact = new contactEntity_1.ContactEntity();
             newContact.email = email;
             newContact.phone_number = phone_number;
@@ -185,7 +183,6 @@ const createContact = (email, phone_number) => __awaiter(void 0, void 0, void 0,
         return ans;
     }
     else {
-        console.log("5");
         const newContact = new contactEntity_1.ContactEntity();
         newContact.email = email;
         newContact.phone_number = phone_number;

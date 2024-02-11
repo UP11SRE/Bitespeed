@@ -166,7 +166,6 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
       WHERE linked_id = ${contactWithPhoneNumber.id} OR id = ${contactWithPhoneNumber.id}
        `;
       const result = await contactRepository.query(re1);
-      console.log("checking the result-1", result);
     
       const {emails,phoneNumbers,secondaryContactIds} = await clean_data(result,"null",contactWithPhoneNumber.phone_number,contactWithPhoneNumber.id)
 
@@ -182,7 +181,6 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
     }
      
     else{
-      console.log("32");
     const newContact = new ContactEntity();
     newContact.email = email;
     newContact.phone_number = phone_number;
@@ -240,7 +238,6 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
 
     return ans;
   } else {
-    console.log("5");
     const newContact = new ContactEntity();
     newContact.email = email;
     newContact.phone_number = phone_number;
