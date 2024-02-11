@@ -15,7 +15,6 @@ const contactEntity_1 = require("../models/contactEntity");
 const createContact = (email, phone_number) => __awaiter(void 0, void 0, void 0, function* () {
     var _a, _b, _c, _d, _e, _f, _g, _h, _j, _k;
     const clean_data = (result, email, phone_number, pid) => __awaiter(void 0, void 0, void 0, function* () {
-        console.log("checking the data", result, email, phone_number, pid);
         const uniqueEmails = new Set();
         result.forEach((item) => {
             uniqueEmails.add(item.email);

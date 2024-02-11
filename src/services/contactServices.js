@@ -14,7 +14,6 @@ const contactRepository_1 = require("../repository/contactRepository");
 const identifyContact = (email, phoneNumber) => __awaiter(void 0, void 0, void 0, function* () {
     email = String(email).toLowerCase();
     phoneNumber = String(phoneNumber).toLowerCase();
-    console.log("checking the details ", email, phoneNumber);
     const res = yield (0, contactRepository_1.createContact)(email, phoneNumber);
     return res;
 });

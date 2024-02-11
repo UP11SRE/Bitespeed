@@ -4,6 +4,8 @@ import { query } from 'express';
 
 const createContact = async (email: string, phone_number: string): Promise<any> => {
 
+  try{
+
   const clean_data = async(result : any, email: any, phone_number: any, pid: any): Promise<any> =>{
 
 
@@ -257,6 +259,11 @@ const createContact = async (email: string, phone_number: string): Promise<any> 
   }
   return ans;
 }
+  }
+  catch(error){
+    console.log("something went wrong", error);
+    return;
+  }
 };
 
 export { createContact };
