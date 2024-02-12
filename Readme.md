@@ -33,7 +33,7 @@ This project was built using the following technologies:
 
 -> Note on Response Time
 
-Due to infrastructure constraints, there might be longer response times. Render automatically takes down the site if there's no activity for a while, causing some initial delay when the site is accessed again. However, we've implemented best practices like error handling using try and catch blocks, reusable functions, and minimizing database calls to optimize performance.
+Due to infrastructure constraints, there might be longer response times. Render automatically takes down the site if there's no activity for a while, causing some initial delay when the site is accessed again. However, we've implemented best practices like error handling using try-and-catch blocks, reusable functions, and minimizing database calls to optimize performance.
 
 -> Future Scope
 
@@ -41,5 +41,6 @@ For future enhancements, we can consider the following:
 
 1- Implementing a load balancer to manage traffic efficiently.
 2- Further optimizing database calls for better performance.
+3- Creating a master-slave replica for faster read and write operations.
 
 Thank you for using the Bitspeed Assignment project! If you have any questions or feedback, feel free to reach out.
